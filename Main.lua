@@ -43,29 +43,7 @@ function Codex_OnTooltipShown()
     if spellList then
         for i = 0, 4 do
             if spellList[i] then
-                -- Create a separator to make some space between each spell
-                GameTooltip:AddLine(" ");
-
-                -- Use a double line for the spell name and icon
                 GameTooltip:AddDoubleLine(Codex_GetSpellName(spellList[i]), " ")
-
-                -- Create a spell icon UI if it doesn't exist
-                if not spellIcons[i] then
-                    spellIcons[i] = Codex_CreateSpellIcon()
-                end
-
-                local schoolColor = schoolColors[spellList[i].school]
-
-                -- Set the proper spell icon, school and description
-                Codex_SetSpellIcon(spellIcons[i], spellList[i], schoolColor)
-                GameTooltip:AddLine(Codex_GetSpellSchool(spellList[i]), schoolColor.r, schoolColor.g, schoolColor.b, true)     
-                GameTooltip:AddLine(Codex_GetSpellDescription(spellList[i]), 1, 1, 1, true)     
-
-                -- Make sure the spell icon is visible
-                Codex_ShowSpellIcon(spellIcons[i])
-            elseif spellIcons[i] then
-                -- Hide the spell icon if 
-                Codex_HideSpellIcon(spellIcons[i])
             end
         end
 
